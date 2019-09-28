@@ -1,0 +1,48 @@
+
+.grid-container {
+	max-width: 90rem;
+}
+
+#data_container,
+#generate_container {
+	margin-top: 40px;
+}
+
+.cut-off {
+	border: 1px solid magenta;
+	width: 3.2in;
+	min-height: 3.2in;
+	font-family: 'Calibri', sans-serif;
+}
+
+	.logo-container {
+		padding: 0.2in 0.2in 0.1in 0.2in;
+	}
+
+	.upc-container {
+		height: 0.7in;
+		overflow: hidden;
+		position: relative;
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+
+		#upc-svg text {
+			font-size: 19px !important;
+			font-weight: 700 !important;
+			font-family: 'Calibri', sans-serif !important;
+		}
+	}
+
+	.master-container {
+		font-size: 0.2in;
+		text-transform: uppercase;
+	}
+
+	.description-container {
+		padding: 0 0.1in;
+	}
+
+	.sku-container {
+		text-transform: uppercase;
+	}

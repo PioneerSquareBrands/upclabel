@@ -1,0 +1,63 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Product Label Generator-inator</title>
+    <link rel="stylesheet" href="assets/css/foundation.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+				<div class="large-6 cell" id="data_container">
+					<form>
+						<div class="grid-container">
+							<div class="grid-x grid-padding-x">
+								<div class="large-6 cell">
+									<label>Item Master</label>
+									<input type="text" placeholder="Item Master" id="item_master">
+								</div>
+								<div class="large-6 cell">
+									<label>SKU #</label>
+									<input type="text" placeholder="SKU #" id="sku">
+								</div>
+								<div class="large-12 cell">
+									<label>Description</label>
+									<input type="text" placeholder="Description" id="description">
+								</div>
+								<div class="large-6 cell">
+									<label>Item UPC</label>
+									<input type="text" placeholder="Item UPC" id="upc">
+								</div>
+								<div class="large-6 cell">
+									<label>QR Link</label>
+									<input type="text" placeholder="QR Link" id="qr">
+								</div>
+								<div class="large-12 cell">
+									<button id="generate" class="button large" type="submit">Generate Image</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="large-6 cell grid-x grid-padding-x align-center-middle text-center" id="generate_container">
+					<div class="cut-off">
+						<div class="logo-container"><img src="assets/img/gd-logo.png"></div>
+						<div class="master-container">000000</div>
+						<div class="upc-container"><svg id="upc-svg"></svg></div>
+						<div class="description-container">Item Name - Variant Name</div>
+						<div class="sku-container">00000000-0</div>
+						<div class="quantity-container"></div>
+					</div>
+				</div>
+      </div>
+		</div>
+		<script src="assets/js/vendor/JsBarcode.all.min.js"></script>
+		<script src="assets/js/vendor/jquery.js"></script>
+		<script src="assets/js/vendor/what-input.js"></script>
+		<script src="assets/js/vendor/foundation.js"></script>
+		<script src="assets/js/app.js"></script>
+  </body>
+</html>
