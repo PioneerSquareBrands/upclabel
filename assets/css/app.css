@@ -34,10 +34,13 @@
 
 .master-container {
   font-size: 0.2in;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  text-align: center; }
 
 .description-container {
-  padding: 0 0.1in; }
+  padding: 0 0.1in;
+  text-align: center; }
 
 .sku-container {
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  text-align: center; }
