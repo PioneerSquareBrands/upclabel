@@ -1,25 +1,40 @@
 $(document).foundation()
-JsBarcode("#upc-svg", '11111111111', {format: "upc"});
 
+$(window).on('load', function() {
+	$('#generator_form').trigger('change');
+});
 
-$('#generate').on('click', function(e) {
-	e.preventDefault();
+$("#generator_form input[type='text']").on("click", function () {
+	$(this).select();
+});
 
+function generate() {
 	var itemMaster = $('#item_master').val();
 	var upc = $('#upc').val();
 	var sku = $('#sku').val();
 	var desc = $('#description').val();
+	var qty = $('input[name="qty"]:checked').val();
 	var qr = $('#qr').val();
 
 	JsBarcode("#upc-svg", upc, {format: "upc"});
 	$('.master-container').text(itemMaster);
 	$('.description-container').text(desc);
 	$('.sku-container').text(sku);
-	//$('.quantity-container').text('qr')
+	$('.quantity-container .qty-val').text(qty)
+}
+
+$('#generator_form').on('change keyup paste', function(e) {
+	generate();
 });
 
-$('#download-pdf button').on('click', function(e) {
-	var element = document.getElementById('pdf-gen');
+$('#generate').on('click', function(e) {
+	e.preventDefault();
+	generate();
+});
+
+$('#download-pdf').on('click', function(e) {
+	e.preventDefault();
+	var element = document.getElementById('generate_container');
 	var opt = {
 		margin:       1,
 		filename:     'myfile.pdf',

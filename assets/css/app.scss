@@ -3,16 +3,36 @@
 	max-width: 90rem;
 }
 
+#quantity_input label.option {
+	cursor: pointer;
+	display: inline-block;
+	margin-right: 24px;
+
+	input {
+		margin-right: 5px;
+		margin-bottom: 0;
+	}
+
+	span {
+		vertical-align: middle;
+	}
+}
+
 #data_container,
 #generate_container {
 	margin-top: 40px;
 }
 
+#generate_container {
+	text-align: center;
+}
+
 .cut-off {
+	display: inline-block;
 	border: 1px solid magenta;
 	width: 3.2in;
 	min-height: 3.2in;
-	font-family: 'Calibri', sans-serif;
+	font-family: 'Roboto';
 }
 
 	.logo-container {
@@ -30,14 +50,21 @@
 		#upc-svg text {
 			font-size: 19px !important;
 			font-weight: 700 !important;
-			font-family: 'Calibri', sans-serif !important;
+			font-family: 'Roboto' !important;
 		}
 	}
 
 	.master-container {
-		font-size: 0.2in;
+		font-size: 0.15in;
 		text-transform: uppercase;
 		text-align: center;
+		font-weight: 700;
+	}
+
+	.description-container,
+	.sku-container,
+	.quantity-container {
+		font-size: 0.15in;
 	}
 
 	.description-container {
@@ -48,4 +75,17 @@
 	.sku-container {
 		text-transform: uppercase;
 		text-align: center;
+		display: inline-block;
+		padding-left: 0.1in;
+		width: calc(50%  - 0.1in);
+		box-sizing: border-box;
+		text-align: left;
+	}
+
+	.quantity-container {
+		display: inline-block;
+		width: calc(50%  - 0.1in);
+		padding-right:0.1in;
+		box-sizing: border-box;
+		text-align: right;
 	}
