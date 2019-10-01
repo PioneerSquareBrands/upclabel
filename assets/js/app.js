@@ -48,13 +48,8 @@ $('#download-pdf').on('click', function(e) {
 });
 
 /* 
-var pdf = new jsPDF('p', 'pt', 'letter');
-	pdf.html(document.getElementById('pdf-gen'), {
-		callback: function (pdf) {
-			var iframe = document.createElement('iframe');
-			iframe.setAttribute('style', 'position:absolute;right:0; top:0; bottom:0; height:100%; width:500px');
-			document.body.appendChild(iframe);
-			iframe.src = pdf.output('datauristring');
-		}
-	}
-); */
+	git fetch --all
+	git reset --hard origin/master
+
+	to overwrite local copy from repository
+*/

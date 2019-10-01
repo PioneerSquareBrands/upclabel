@@ -63,61 +63,69 @@
 	display: inline-block;
 	border: 1px solid magenta;
 	width: 3.2in;
+	display: inline-flex;
+	flex-direction: column;
 	min-height: 3.2in;
 	font-family: 'Roboto';
+	padding: 0.1in 0.1in 0.2in;
 
-	.logo-container {
-		padding: 0.2in 0.2in 0.1in 0.2in;
-	}
+	.upc-wrapper {
 
-	.upc-container {
-		height: 0.7in;
-		overflow: hidden;
-		position: relative;
-		display: flex;
-		align-items: flex-end;
-		justify-content: center;
+		.logo-container {
+			padding: 0.1in 0.1in 0.025in;
+		}
 
-		#upc-svg text {
-			font-size: 19px !important;
-			font-weight: 700 !important;
-			font-family: 'Roboto' !important;
+		.upc-container {
+			height: 0.6in;
+			overflow: hidden;
+			position: relative;
+			display: flex;
+			align-items: flex-end;
+			justify-content: center;
+		}
+
+		.master-container {
+			font-size: 0.15in;
+			text-transform: uppercase;
+			text-align: center;
+			font-weight: 700;
+		}
+
+		.description-container,
+		.sku-container,
+		.quantity-container {
+			font-size: 0.15in;
+		}
+
+		.description-container {
+			text-align: center;
+		}
+
+		.sku-container {
+			text-transform: uppercase;
+			text-align: center;
+			display: inline-block;
+			width: calc(50%  - 0.1in);
+			box-sizing: border-box;
+			text-align: left;
+		}
+
+		.quantity-container {
+			display: inline-block;
+			width: calc(50%  - 0.1in);
+			box-sizing: border-box;
+			text-align: right;
+		}
+
+		.button-controls {
+			margin-bottom: 50px;
 		}
 	}
 
-	.master-container {
-		font-size: 0.15in;
-		text-transform: uppercase;
-		text-align: center;
-		font-weight: 700;
-	}
-
-	.description-container,
-	.sku-container,
-	.quantity-container {
-		font-size: 0.15in;
-	}
-
-	.description-container {
-		padding: 0 0.1in;
-		text-align: center;
-	}
-
-	.sku-container {
-		text-transform: uppercase;
-		text-align: center;
-		display: inline-block;
-		padding-left: 0.1in;
-		width: calc(50%  - 0.1in);
+	.qr-wrapper {
+		border: 2px solid #000000;
+		margin: 0.1in 0.1in 0;
 		box-sizing: border-box;
-		text-align: left;
-	}
-
-	.quantity-container {
-		display: inline-block;
-		width: calc(50%  - 0.1in);
-		padding-right:0.1in;
-		box-sizing: border-box;
-		text-align: right;
+		flex: 1;
 	}
 }
