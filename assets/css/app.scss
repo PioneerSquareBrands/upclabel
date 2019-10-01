@@ -25,6 +25,38 @@
 
 #generate_container {
 	text-align: center;
+	border: 1px solid #cccccc;
+}
+
+#generated_wrapper {
+	text-align: center;
+	padding: 40px;
+	min-height: 1vh;
+}
+
+.upc-label {
+	margin-bottom: 40px;;
+
+	&--heading {
+		font-size: 0.20in;
+		font-weight: 700;
+		text-transform: uppercase;
+		margin-bottom: 10px;
+		padding-bottom: 0;
+		line-height: 1em;
+	}
+
+	&--size {
+		font-size: 0.15in;
+		text-transform: uppercase;
+		margin-bottom: 10px;
+	}
+
+	&--note {
+		font-size: 0.1in;
+		color: magenta;
+		margin-bottom: 10px;
+	}
 }
 
 .cut-off {
@@ -33,7 +65,6 @@
 	width: 3.2in;
 	min-height: 3.2in;
 	font-family: 'Roboto';
-}
 
 	.logo-container {
 		padding: 0.2in 0.2in 0.1in 0.2in;
@@ -89,3 +120,4 @@
 		box-sizing: border-box;
 		text-align: right;
 	}
+}

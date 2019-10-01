@@ -34,13 +34,14 @@ $('#generate').on('click', function(e) {
 
 $('#download-pdf').on('click', function(e) {
 	e.preventDefault();
-	var element = document.getElementById('generate_container');
+	var fileName =  $('#item_master').val() + ' (' + $('input[name="qty"]:checked').val() + 'pack).pdf';
+	var element = document.getElementById('generated_wrapper');
 	var opt = {
-		margin:       1,
-		filename:     'myfile.pdf',
-		image:        { type: 'png' },
-		html2canvas:  { scale: 2 },
-		jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+		margin: 1,
+		filename: fileName,
+		image: { type: 'png' },
+		html2canvas: { scale: 2 },
+		jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
 	};
 
 	html2pdf().set(opt).from(element, 'element').save();

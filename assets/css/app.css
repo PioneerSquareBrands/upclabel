@@ -16,7 +16,31 @@
   margin-top: 40px; }
 
 #generate_container {
-  text-align: center; }
+  text-align: center;
+  border: 1px solid #cccccc; }
+
+#generated_wrapper {
+  text-align: center;
+  padding: 40px;
+  min-height: 1vh; }
+
+.upc-label {
+  margin-bottom: 40px; }
+  .upc-label--heading {
+    font-size: 0.20in;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    padding-bottom: 0;
+    line-height: 1em; }
+  .upc-label--size {
+    font-size: 0.15in;
+    text-transform: uppercase;
+    margin-bottom: 10px; }
+  .upc-label--note {
+    font-size: 0.1in;
+    color: magenta;
+    margin-bottom: 10px; }
 
 .cut-off {
   display: inline-block;
@@ -24,57 +48,50 @@
   width: 3.2in;
   min-height: 3.2in;
   font-family: 'Roboto'; }
-
-.logo-container {
-  padding: 0.2in 0.2in 0.1in 0.2in; }
-
-.upc-container {
-  height: 0.7in;
-  overflow: hidden;
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: end;
-  -ms-flex-align: end;
-  align-items: flex-end;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center; }
-  .upc-container #upc-svg text {
-    font-size: 19px !important;
-    font-weight: 700 !important;
-    font-family: 'Roboto' !important; }
-
-.master-container {
-  font-size: 0.15in;
-  text-transform: uppercase;
-  text-align: center;
-  font-weight: 700; }
-
-.description-container,
-.sku-container,
-.quantity-container {
-  font-size: 0.15in; }
-
-.description-container {
-  padding: 0 0.1in;
-  text-align: center; }
-
-.sku-container {
-  text-transform: uppercase;
-  text-align: center;
-  display: inline-block;
-  padding-left: 0.1in;
-  width: calc(50%  - 0.1in);
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  text-align: left; }
-
-.quantity-container {
-  display: inline-block;
-  width: calc(50%  - 0.1in);
-  padding-right: 0.1in;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  text-align: right; }
+  .cut-off .logo-container {
+    padding: 0.2in 0.2in 0.1in 0.2in; }
+  .cut-off .upc-container {
+    height: 0.7in;
+    overflow: hidden;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+    .cut-off .upc-container #upc-svg text {
+      font-size: 19px !important;
+      font-weight: 700 !important;
+      font-family: 'Roboto' !important; }
+  .cut-off .master-container {
+    font-size: 0.15in;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700; }
+  .cut-off .description-container,
+  .cut-off .sku-container,
+  .cut-off .quantity-container {
+    font-size: 0.15in; }
+  .cut-off .description-container {
+    padding: 0 0.1in;
+    text-align: center; }
+  .cut-off .sku-container {
+    text-transform: uppercase;
+    text-align: center;
+    display: inline-block;
+    padding-left: 0.1in;
+    width: calc(50%  - 0.1in);
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: left; }
+  .cut-off .quantity-container {
+    display: inline-block;
+    width: calc(50%  - 0.1in);
+    padding-right: 0.1in;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: right; }
