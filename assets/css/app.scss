@@ -1,3 +1,11 @@
+@font-face {
+	font-family: 'OCRB';
+	src: url('../fonts/OCRB.woff2') format('woff2'),
+			url('../fonts/OCRB.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
 html, body {
 	font-family: 'Roboto';
 }
@@ -81,6 +89,7 @@ select {
 		margin-bottom: 10px;
 		padding-bottom: 0;
 		line-height: 1em;
+		font-family: 'OCRB';
 	}
 
 	&--size {
@@ -135,9 +144,34 @@ select {
 			align-items: flex-end;
 			justify-content: center;
 
-			#upc-svg g:nth-child(4) text,
-			#upc-svg g:nth-child(6) text {
-				font-size: 21px !important;
+			svg {
+				position: relative;
+			}
+
+			.gd_svg-sub,
+			.bh_svg-sub {
+				position: absolute;
+			}
+
+			.clear-svg {
+				position: absolute;
+				font-size: 16px;
+				font-family: 'OCRB';
+				z-index: 99999;
+				display: inline-block;
+
+				&:nth-child(3),
+				&:nth-child(5) {
+					font-size: 18px;
+				}
+			}
+
+			#gd_upcDrawing,
+			#bh_upcDrawing {
+				display: none;
+				position:absolute;
+				width: 150%;
+				height: 150%;
 			}
 		}
 

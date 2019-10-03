@@ -1,60 +1,61 @@
 $(document).foundation()
-
+		
 $(window).on('load', function() {
 	switchDefault();
 	$('#generator_form').trigger('change');
 });
 
 function generate() {
-	var brand = $('#brand').val();
+	// Check the values
+	var brand = $('#brand').val().toLowerCase();
+	var upcHeading = $('#upc_header').val();
 	var itemMaster = $('#item_master').val();
-	var upc = $('#upc').val();
 	var sku = $('#sku').val();
 	var desc = $('#description').val();
+	var upc = $('#upc').val();
+	var qr = $('#qr').val();
 	var qtyLabel = $('#quantity_label').val();
 	var qty = $('input[name="qty"]:checked').val();
-	if (brand == 'GD') {
-		var qrLinkGenerate = 'https://www.gumdropcases.com/' + itemMaster;
-	}
-	else if(brand == 'BH') {
-		var qrLinkGenerate = 'https://brenthaven.com/' + itemMaster;
-	}
-	$('input#qr').val(qrLinkGenerate);
-	var qr = $('#qr').val();
 
-	var upcHeading = $('#upc_header').val();
 	$('.upc-label--heading').text(upcHeading);
 
-	if (brand == 'GD') {
-		$('#gd_label').show();
-		$('#bh_label').hide();
+	$('#' + brand + '_label').each(function() {
+		$(this).siblings().hide();
+		$(this).show();
 
-		JsBarcode("#gd_label #upc-svg", upc, {format: "upc"});
-		$('#gd_label .master-container').text(itemMaster);
-		$('#gd_label .description-container').text(desc);
-		$('#gd_label .sku-container').text(sku);
-		$('#gd_label .quantity-container .qty-label').text(qtyLabel + ':')
-		$('#gd_label .quantity-container .qty-val').text(qty)
-		$('#gd_label #qrcode').html('');
-		$('#gd_label #qrcode').qrcode({width: 64, height: 64, text: qr});
-		$('#gd_label .qr-link').text(qr);
-	} 
-	else if(brand == 'BH') {
-		$('#bh_label').show();
-		$('#gd_label').hide();
+		var upcSVG = '#' + brand + '_upc-svg';
 
-		JsBarcode("#bh_label #upc-svg", upc, {format: "upc"});
-		$('#bh_label .master-container').text(itemMaster);
-		$('#bh_label .description-container').text(desc);
-		$('#bh_label .sku-container').text(sku);
-		$('#bh_label .quantity-container .qty-label').text(qtyLabel + ':')
-		$('#bh_label .quantity-container .qty-val').text(qty)
-		$('#bh_label #qrcode').html('');
-		$('#bh_label #qrcode').qrcode({width: 64, height: 64, text: qr});
-		$('#bh_label .qr-link').text(qr);
-	}
+		$(this).find('.master-container').text(itemMaster);
+		JsBarcode(upcSVG, upc, {
+			format: 'upc',
+			font: 'OCRB',
+			fontSize: 16
+		});
 
-	$('#upc-svg g:nth-child(4) text, #upc-svg g:nth-child(6) text').css('font', 'bold 21px Consolas');
+		// Font Adjustment for middle barcode
+		var upcSelector = ('#' + brand + '_upc-svg g:nth-child(4) text, #' + brand + '_upc-svg g:nth-child(6) text');
+		$(upcSelector).css('font', '18px OCRB');
+
+		// Barcode Number fix/hack
+		$('#' + brand + '_upc-svg').siblings('.upc-container').find('.' + brand + '_svg-sub').html('');
+		$('#' + brand + '_upc-svg g text').each(function() {
+			var posTop = Math.floor($(this).position().top) - Math.floor($('.' + brand + '_svg-sub').offset().top) - 1;
+			var posLeft = (Math.floor($(this).position().left) + 2) - Math.floor($('.' + brand + '_svg-sub').offset().left); 
+			var posText = $(this).text();
+			var upcParent = $(this).parents('.upc-container');
+			
+			$(upcParent).find('.' + brand + '_svg-sub').append('<span class="clear-svg" style="top: ' + posTop + 'px; left: ' + posLeft + 'px;">' + posText + '</span>');
+			$(this).hide();
+		});
+		// End Barcode Number fix/hack
+
+		$(this).find('.description-container').text(desc);
+		$(this).find('.sku-container').text(sku);
+		$(this).find('.quantity-container .qty-label').text(qtyLabel + ':')
+		$(this).find('.quantity-container .qty-val').text(qty)
+		$(this).find('#qrcode').html('').qrcode({width: 64, height: 64, text: qr});
+		$(this).find('.qr-link').text(qr);
+	});
 }
 
 function switchDefault() {
@@ -65,23 +66,26 @@ function switchDefault() {
 	});
 }
 
-$('.qr-lock').on('click', function(e) {
-	e.preventDefault();
-	$('#qr').prop('disabled', function(i, v) { return !v; });
-})
+function svgToCanvas(targetElem) {
+	var svgElem = targetElem.getElementsByTagName("svg");
+	for (const node of svgElem) {
+		node.setAttribute("font-family", window.getComputedStyle(node, null).getPropertyValue("font-family"));
+		node.replaceWith(node);
+	}
+}
 
 $('#generator_form').on('change keyup paste', function(e) {
 	generate();
 });
 
-$('#generate').on('click', function(e) {
-	e.preventDefault();
-	generate();
-});
-
 $('#brand').on('change', function() {
 	switchDefault();
-})
+});
+
+$('.qr-lock').on('click', function(e) {
+	e.preventDefault();
+	$('#qr').prop('disabled', function(i, v) { return !v; });
+});
 
 $('#download-pdf').on('click', function(e) {
 	e.preventDefault();
@@ -100,6 +104,7 @@ $('#download-pdf').on('click', function(e) {
 		jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
 	};
 
+	svgToCanvas(element);
 	html2pdf().set(opt).from(element, 'element').save();
 });
 

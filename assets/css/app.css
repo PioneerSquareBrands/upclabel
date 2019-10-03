@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'OCRB';
+  src: url("../fonts/OCRB.woff2") format("woff2"), url("../fonts/OCRB.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+
 html, body {
   font-family: 'Roboto'; }
 
@@ -66,7 +72,8 @@ select {
     text-transform: uppercase;
     margin-bottom: 10px;
     padding-bottom: 0;
-    line-height: 1em; }
+    line-height: 1em;
+    font-family: 'OCRB'; }
   .upc-label--size {
     font-size: 0.15in;
     text-transform: uppercase;
@@ -119,9 +126,25 @@ select {
       -webkit-box-pack: center;
       -ms-flex-pack: center;
       justify-content: center; }
-      .cut-off .upc-wrapper .upc-container #upc-svg g:nth-child(4) text,
-      .cut-off .upc-wrapper .upc-container #upc-svg g:nth-child(6) text {
-        font-size: 21px !important; }
+      .cut-off .upc-wrapper .upc-container svg {
+        position: relative; }
+      .cut-off .upc-wrapper .upc-container .gd_svg-sub,
+      .cut-off .upc-wrapper .upc-container .bh_svg-sub {
+        position: absolute; }
+      .cut-off .upc-wrapper .upc-container .clear-svg {
+        position: absolute;
+        font-size: 16px;
+        font-family: 'OCRB';
+        z-index: 99999;
+        display: inline-block; }
+        .cut-off .upc-wrapper .upc-container .clear-svg:nth-child(3), .cut-off .upc-wrapper .upc-container .clear-svg:nth-child(5) {
+          font-size: 18px; }
+      .cut-off .upc-wrapper .upc-container #gd_upcDrawing,
+      .cut-off .upc-wrapper .upc-container #bh_upcDrawing {
+        display: none;
+        position: absolute;
+        width: 150%;
+        height: 150%; }
     .cut-off .upc-wrapper .master-container {
       font-size: 0.15in;
       line-height: 0.15in;
