@@ -53,19 +53,19 @@ function generate() {
 		$('#' + brand + '_upc-svg g text').each(function(i) {
 			var posTop = $(this).parent('g').attr('transform').replace('translate(', '').replace(')', '').replace(',', '').split(' ')[1];
 			var posLeft = $(this).parent('g').attr('transform').replace('translate(', '').replace(')', '').replace(',', '').split(' ')[0];
-			$(this).parent('g').attr('id', 'svg_clear_' + i);
+			$(this).parent('g').attr('id', brand + '_svg_clear_' + i);
 			var posMar = 0;
 			if( i > 0 ) {
-				posMar = (document.getElementById('svg_clear_' + i).getBoundingClientRect().left) - ((document.getElementById('svg_clear_' + (i - 1)).getBoundingClientRect().left) + document.getElementById('svg_clear_' + (i - 1)).getBoundingClientRect().width);
+				posMar = (document.getElementById(brand + '_svg_clear_' + i).getBoundingClientRect().left) - ((document.getElementById(brand + '_svg_clear_' + (i - 1)).getBoundingClientRect().left) + document.getElementById(brand + '_svg_clear_' + (i - 1)).getBoundingClientRect().width);
 			}
-			var posWid = document.getElementById('svg_clear_' + i).getBoundingClientRect().width + 'px';
-			var posHyt = document.getElementById('svg_clear_' + i).getBoundingClientRect().height + 'px';
+			var posWid = document.getElementById(brand + '_svg_clear_' + i).getBoundingClientRect().width + 'px';
+			var posHyt = document.getElementById(brand + '_svg_clear_' + i).getBoundingClientRect().height + 'px';
 			var posText = $(this).text();
 			var upcParent = $(this).parents('.upc-container');
 			$(upcParent).find('.' + brand + '_svg-sub .svg-sub-wrap').append('<span class="clear-svg" style="margin-left: ' + posMar + 'px; width: ' + posWid + '; height: ' + posHyt + '; left: ' + posLeft + 'px; top: ' + posTop + 'px;"><span style="position: absolute;display: block;top: 99px;">' + posText + '</span></span>');
 
 			// Hide svg texts
-			$(this).hide();
+			$(this).css({'opacity': 0});
 		});
 		// End Barcode Number fix/hack
 
@@ -151,11 +151,12 @@ $('.qr-lock').on('click', function(e) {
 $('#download-pdf').on('click', function(e) {
 	e.preventDefault();
 	var brand = $('#brand').val();
+	var bag = $('#upc_header').val();
 	var itemMaster = $('#item_master').val();
 	var qtyLabel = $('#quantity_label').val().replace(' ', '_');
-	var qty = $('input[name="qty"]:checked').val();
+	var qty = $('#qty').val();
 
-	var fileName =  brand + '-' + itemMaster + ' (' + qtyLabel + '-' + qty + ').pdf';
+	var fileName =  brand + itemMaster + ' (' + bag + ') (' + qtyLabel + '-' + qty + ').pdf';
 	var element = document.getElementById('generated_wrapper');
 	var opt = {
 		margin: 1,
