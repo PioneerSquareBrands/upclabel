@@ -89,7 +89,6 @@ select {
 		margin-bottom: 10px;
 		padding-bottom: 0;
 		line-height: 1em;
-		font-family: 'OCRB';
 	}
 
 	&--size {
@@ -197,6 +196,17 @@ select {
 			display: flex;
 			align-items: center;
 			justify-content: center;
+
+			&.desc-medium {
+				font-size: 0.12in;
+				z-index: 9;
+				position: relative;
+			}
+			&.desc-long {
+				font-size: 0.11in;
+				z-index: 9;
+				position: relative;
+			}
 		}
 
 		.sku-container {
@@ -206,6 +216,10 @@ select {
 			width: calc(70%  - 0.1in);
 			box-sizing: border-box;
 			text-align: left;
+
+			&.sku-long {
+				font-size: 0.115in;
+			}
 
 			&::before {
 				content: 'SKU: ';
@@ -269,6 +283,7 @@ select {
 
 			canvas {
 				max-width: 100%;
+				width: 63px;
 			}
 		}
 
@@ -292,10 +307,17 @@ select {
 
 		.description-container {
 			font-size: 0.25in;
-			line-height: 0.25in;
+			line-height: 1em;
 			font-weight: 700;
 			margin-top: 0.1in;
 			min-height: 48px;
+
+			&.desc-medium {
+				font-size: 0.18in;
+			}
+			&.desc-long {
+				font-size: 0.16in;
+			}
 		}
 
 		.upc-container {

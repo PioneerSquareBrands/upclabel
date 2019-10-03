@@ -72,8 +72,7 @@ select {
     text-transform: uppercase;
     margin-bottom: 10px;
     padding-bottom: 0;
-    line-height: 1em;
-    font-family: 'OCRB'; }
+    line-height: 1em; }
   .upc-label--size {
     font-size: 0.15in;
     text-transform: uppercase;
@@ -169,6 +168,14 @@ select {
       -webkit-box-pack: center;
       -ms-flex-pack: center;
       justify-content: center; }
+      .cut-off .upc-wrapper .description-container.desc-medium {
+        font-size: 0.12in;
+        z-index: 9;
+        position: relative; }
+      .cut-off .upc-wrapper .description-container.desc-long {
+        font-size: 0.11in;
+        z-index: 9;
+        position: relative; }
     .cut-off .upc-wrapper .sku-container {
       text-transform: uppercase;
       text-align: center;
@@ -177,6 +184,8 @@ select {
       -webkit-box-sizing: border-box;
       box-sizing: border-box;
       text-align: left; }
+      .cut-off .upc-wrapper .sku-container.sku-long {
+        font-size: 0.115in; }
       .cut-off .upc-wrapper .sku-container::before {
         content: 'SKU: '; }
     .cut-off .upc-wrapper .quantity-container {
@@ -236,7 +245,8 @@ select {
       -ms-flex: 0 0 25%;
       flex: 0 0 25%; }
       .cut-off .qr-wrapper #qrcode canvas {
-        max-width: 100%; }
+        max-width: 100%;
+        width: 63px; }
     .cut-off .qr-wrapper .qr-link {
       -webkit-box-flex: 0;
       -ms-flex: 0 0 100%;
@@ -263,10 +273,14 @@ select {
     flex-direction: column; }
     .cut-off #bh_label .description-container {
       font-size: 0.25in;
-      line-height: 0.25in;
+      line-height: 1em;
       font-weight: 700;
       margin-top: 0.1in;
       min-height: 48px; }
+      .cut-off #bh_label .description-container.desc-medium {
+        font-size: 0.18in; }
+      .cut-off #bh_label .description-container.desc-long {
+        font-size: 0.16in; }
     .cut-off #bh_label .upc-container {
       height: 0.8in;
       margin-top: 10px; }

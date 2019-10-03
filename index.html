@@ -45,13 +45,13 @@
 									<label>Item Master</label>
 									<input class="switch-default" type="text" placeholder="Item Master" id="item_master" value="" data-bh="2890" data-gd="01A001">
 								</div>
-								<div class="large-6 cell" data-section="sku">
+								<div class="large-6 cell" data-section="SKU">
 									<label>SKU #</label>
-									<input class="switch-default" type="text" placeholder="SKU #" id="sku" value="" data-bh="2890000" data-gd="01A001E01-0">
+									<input class="switch-default" type="text" placeholder="SKU #" id="sku" value="" data-bh="2890000" data-gd="01A001E01-0" maxlength="18">
 								</div>
 								<div class="large-12 cell" data-section="Description/Item Name">
 									<label>Description</label>
-									<input class="switch-default" type="text" placeholder="Description" id="description" value=""  data-bh="Edge 360 for iPad 10.2 7th Gen - Gray" data-gd="DropTech Clear for iPad 10.2 - Black">
+									<input class="switch-default" type="text" id="description" placeholder="Item Name" value="" data-bh="Edge 360 for iPad 10.2 7th Gen - Gray" data-gd="DropTech Clear for iPad 10.2 - Black" data-bh-limit="45, 65" data-gd-limit="65, 95" maxlength="100">
 								</div>
 								<div class="large-6 cell" data-section="Item UPC/Barcode">
 									<label>Item UPC</label>
@@ -74,8 +74,7 @@
 								</div>
 								<div class="large-6 cell" id="quantity_input" data-section="Quantity Number">
 									<label>Quantity</label>
-									<label class="option"><input type="radio" name="qty" value="01" checked="checked"><span class="value">01</span></label><!--
-							 --><label class="option"><input type="radio" name="qty" value="10"><span>10</span></label>
+									<input type="number" placeholder="Quantity" id="qty" value="01">
 								</div>
 								<div class="large-12 cell button-controls" data-section="Controls">
 									<button id="download-pdf" class="button large">Download PDF</button>

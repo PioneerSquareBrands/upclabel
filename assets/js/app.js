@@ -10,12 +10,21 @@ function generate() {
 	var brand = $('#brand').val().toLowerCase();
 	var upcHeading = $('#upc_header').val();
 	var itemMaster = $('#item_master').val();
+	
 	var sku = $('#sku').val();
+	var skuLen = $('#sku').val().length;
+	
 	var desc = $('#description').val();
+	var descLen = $('#description').val().length;
+	var descLimit = $('#description').data( brand + '-limit' ).split(', ');
+	var descMed = descLimit[0];
+	var descLong = descLimit[1];
+	
 	var upc = $('#upc').val();
 	var qr = $('#qr').val();
 	var qtyLabel = $('#quantity_label').val();
-	var qty = $('input[name="qty"]:checked').val();
+	var qty = $('#qty').val();
+	qty.length == 1 ? $('#qty').val('0' + qty) : $('#qty').val(qty);
 
 	$('.upc-label--heading').text(upcHeading);
 
@@ -37,7 +46,7 @@ function generate() {
 		$(upcSelector).css('font', '18px OCRB');
 
 		// Barcode Number fix/hack
-		$('#' + brand + '_upc-svg').siblings('.upc-container').find('.' + brand + '_svg-sub').html('');
+		$('#' + brand + '_upc-svg').siblings('.' + brand + '_svg-sub').html('');
 		$('#' + brand + '_upc-svg g text').each(function() {
 			var posTop = Math.floor($(this).position().top) - Math.floor($('.' + brand + '_svg-sub').offset().top) - 1;
 			var posLeft = (Math.floor($(this).position().left) + 2) - Math.floor($('.' + brand + '_svg-sub').offset().left); 
@@ -50,10 +59,27 @@ function generate() {
 		// End Barcode Number fix/hack
 
 		$(this).find('.description-container').text(desc);
+		if(descLen > descMed && descLen < descLong) {
+			$(this).find('.description-container').addClass('desc-medium');	
+		} else if(descLen >= descLong ) {
+			$(this).find('.description-container').removeClass('desc-medium');	
+			$(this).find('.description-container').addClass('desc-long');	
+		}
+		else {
+			$(this).find('.description-container').removeClass('desc-medium');
+			$(this).find('.description-container').removeClass('desc-long');
+		}
+
 		$(this).find('.sku-container').text(sku);
+		if(skuLen > 15) {
+			$(this).find('.sku-container').addClass('sku-long');
+		} else {
+			$(this).find('.sku-container').removeClass('sku-long');
+		}
+
 		$(this).find('.quantity-container .qty-label').text(qtyLabel + ':')
 		$(this).find('.quantity-container .qty-val').text(qty)
-		$(this).find('#qrcode').html('').qrcode({width: 64, height: 64, text: qr});
+		$(this).find('#qrcode').html('').qrcode({width: 128, height: 128, text: qr});
 		$(this).find('.qr-link').text(qr);
 	});
 }
@@ -64,14 +90,6 @@ function switchDefault() {
 		var defVal = $(this).data(brand);
 		$(this).val(defVal);
 	});
-}
-
-function svgToCanvas(targetElem) {
-	var svgElem = targetElem.getElementsByTagName("svg");
-	for (const node of svgElem) {
-		node.setAttribute("font-family", window.getComputedStyle(node, null).getPropertyValue("font-family"));
-		node.replaceWith(node);
-	}
 }
 
 $('#generator_form').on('change keyup paste', function(e) {
