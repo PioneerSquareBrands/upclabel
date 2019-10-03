@@ -2,6 +2,8 @@ $(document).foundation()
 		
 $(window).on('load', function() {
 	switchDefault();
+	qrSwitch();
+	$('#qr').prop('disabled', true);
 	$('#generator_form').trigger('change');
 });
 
@@ -24,7 +26,6 @@ function generate() {
 	var qr = $('#qr').val();
 	var qtyLabel = $('#quantity_label').val();
 	var qty = $('#qty').val();
-	qty.length == 1 ? $('#qty').val('0' + qty) : $('#qty').val(qty);
 
 	$('.upc-label--heading').text(upcHeading);
 
@@ -46,7 +47,8 @@ function generate() {
 		$(upcSelector).css('font', '18px OCRB');
 
 		// Barcode Number fix/hack
-		$('#' + brand + '_upc-svg').siblings('.' + brand + '_svg-sub .svg-sub-wrap').html('');
+			// Clear pseudo svg container
+		$('#' + brand + '_upc-svg').siblings('.' + brand + '_svg-sub').find('.svg-sub-wrap').html('');
 		$('.' + brand + '_svg-sub').css({'width': $('#' + brand + '_upc-svg').attr('width'), 'height': $('#' + brand + '_upc-svg').attr('height')})
 		$('#' + brand + '_upc-svg g text').each(function(i) {
 			var posTop = $(this).parent('g').attr('transform').replace('translate(', '').replace(')', '').replace(',', '').split(' ')[1];
@@ -60,8 +62,6 @@ function generate() {
 			var posHyt = document.getElementById('svg_clear_' + i).getBoundingClientRect().height + 'px';
 			var posText = $(this).text();
 			var upcParent = $(this).parents('.upc-container');
-
-			console.log($(this).parent('g').attr('transform').replace('translate(', '').replace(')', '').replace(',', '').split(' ')[0]);
 			$(upcParent).find('.' + brand + '_svg-sub .svg-sub-wrap').append('<span class="clear-svg" style="margin-left: ' + posMar + 'px; width: ' + posWid + '; height: ' + posHyt + '; left: ' + posLeft + 'px; top: ' + posTop + 'px;"><span style="position: absolute;display: block;top: 99px;">' + posText + '</span></span>');
 
 			// Hide svg texts
@@ -92,7 +92,8 @@ function generate() {
 
 		$(this).find('.quantity-container .qty-label').text(qtyLabel + ':')
 		$(this).find('.quantity-container .qty-val').text(qty)
-		$(this).find('#qrcode').html('').qrcode({width: 128, height: 128, text: qr});
+		var qrWid = $(this).find('#qrcode').width() * 2;
+		$(this).find('#qrcode').html('').qrcode({width: qrWid, height: qrWid, text: qr});
 		$(this).find('.qr-link').text(qr);
 	});
 }
@@ -105,17 +106,46 @@ function switchDefault() {
 	});
 }
 
-$('#generator_form').on('change keyup paste', function(e) {
-	generate();
-});
+function qrSwitch() {
+	var brand = $('#brand').val().toLowerCase();
+	var sku = $('#sku').val();
+	var site;
+	if(brand == 'gd') {
+		site = 'https://gumdropcases.com/'
+		if(sku.endsWith('E01-0')){
+			sku = sku.slice(0,-5);
+			console.log('Gumdrop SKU ending with E01-0');
+		}
+	} else if(brand == 'bh') {
+		site = 'https://brenthaven.com/'
+		if(sku.endsWith('000')){
+			sku = sku.slice(0,-3);
+			console.log('Brenthaven SKU ending with 000');
+		}
+	}
+	$('#qr').val(site + sku);
+}
 
 $('#brand').on('change', function() {
 	switchDefault();
 });
 
+$('#generator_form').on('change keyup paste', function(e) {
+	generate();
+});
+
+$('#generator_form #brand, #generator_form #sku').on('change keyup paste', function(e) {
+	qrSwitch();
+});
+
 $('.qr-lock').on('click', function(e) {
 	e.preventDefault();
 	$('#qr').prop('disabled', function(i, v) { return !v; });
+	if($('#qr').hasClass('js-locked')) {
+		$('#qr').removeClass('js-locked');
+	} else {
+		$('#qr').addClass('js-locked');
+	}
 });
 
 $('#download-pdf').on('click', function(e) {
