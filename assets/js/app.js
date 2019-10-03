@@ -166,5 +166,5 @@ $('#download-pdf').on('click', function(e) {
 		jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
 	};
 
-	html2pdf().set(opt).from(element, 'element').save();
+	html2pdf().set(opt).from(element, 'element').save(); 
 });
