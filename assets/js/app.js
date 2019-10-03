@@ -122,7 +122,6 @@ $('#download-pdf').on('click', function(e) {
 		jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
 	};
 
-	svgToCanvas(element);
 	html2pdf().set(opt).from(element, 'element').save();
 });
 
