@@ -168,10 +168,3 @@ $('#download-pdf').on('click', function(e) {
 
 	html2pdf().set(opt).from(element, 'element').save();
 });
-
-/* 
-	git fetch --all
-	git reset --hard origin/master
-
-	to overwrite local copy from repository
-*/
