@@ -299,11 +299,13 @@ select {
 	#gd_label {
 		display: flex;
 		flex-direction: column;
+		flex: 1;
 	}
 
 	#bh_label{
 		display: flex;
 		flex-direction: column;
+		flex: 1;
 
 		.description-container {
 			font-size: 0.25in;

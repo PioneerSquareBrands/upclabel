@@ -262,7 +262,10 @@ select {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
-    flex-direction: column; }
+    flex-direction: column;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1; }
   .cut-off #bh_label {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -270,7 +273,10 @@ select {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
-    flex-direction: column; }
+    flex-direction: column;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1; }
     .cut-off #bh_label .description-container {
       font-size: 0.25in;
       line-height: 1em;
