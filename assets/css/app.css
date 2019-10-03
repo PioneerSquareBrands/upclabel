@@ -20,6 +20,8 @@ html, body {
     font-size: 12px;
     font-weight: 500;
     color: #666666; }
+  #creds .b-support {
+    border-bottom: 1px dashed #999; }
 
 .grid-container {
   max-width: 90rem; }
