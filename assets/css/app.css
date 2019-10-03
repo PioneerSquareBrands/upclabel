@@ -129,7 +129,14 @@ select {
         position: relative; }
       .cut-off .upc-wrapper .upc-container .gd_svg-sub,
       .cut-off .upc-wrapper .upc-container .bh_svg-sub {
-        position: absolute; }
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        overflow: hidden; }
+      .cut-off .upc-wrapper .upc-container .svg-sub-wrap {
+        position: relative;
+        height: 100%; }
       .cut-off .upc-wrapper .upc-container .clear-svg {
         position: absolute;
         font-size: 16px;
@@ -138,12 +145,6 @@ select {
         display: inline-block; }
         .cut-off .upc-wrapper .upc-container .clear-svg:nth-child(3), .cut-off .upc-wrapper .upc-container .clear-svg:nth-child(5) {
           font-size: 18px; }
-      .cut-off .upc-wrapper .upc-container #gd_upcDrawing,
-      .cut-off .upc-wrapper .upc-container #bh_upcDrawing {
-        display: none;
-        position: absolute;
-        width: 150%;
-        height: 150%; }
     .cut-off .upc-wrapper .master-container {
       font-size: 0.15in;
       line-height: 0.15in;

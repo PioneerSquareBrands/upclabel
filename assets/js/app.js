@@ -46,18 +46,30 @@ function generate() {
 		$(upcSelector).css('font', '18px OCRB');
 
 		// Barcode Number fix/hack
-		$('#' + brand + '_upc-svg').siblings('.' + brand + '_svg-sub').html('');
-		$('#' + brand + '_upc-svg g text').each(function() {
-			var posTop = Math.floor($(this).position().top) - Math.floor($('.' + brand + '_svg-sub').offset().top) - 1;
-			var posLeft = (Math.floor($(this).position().left) + 2) - Math.floor($('.' + brand + '_svg-sub').offset().left); 
+		$('#' + brand + '_upc-svg').siblings('.' + brand + '_svg-sub .svg-sub-wrap').html('');
+		$('.' + brand + '_svg-sub').css({'width': $('#' + brand + '_upc-svg').attr('width'), 'height': $('#' + brand + '_upc-svg').attr('height')})
+		$('#' + brand + '_upc-svg g text').each(function(i) {
+			var posTop = $(this).parent('g').attr('transform').replace('translate(', '').replace(')', '').replace(',', '').split(' ')[1];
+			var posLeft = $(this).parent('g').attr('transform').replace('translate(', '').replace(')', '').replace(',', '').split(' ')[0];
+			$(this).parent('g').attr('id', 'svg_clear_' + i);
+			var posMar = 0;
+			if( i > 0 ) {
+				posMar = (document.getElementById('svg_clear_' + i).getBoundingClientRect().left) - ((document.getElementById('svg_clear_' + (i - 1)).getBoundingClientRect().left) + document.getElementById('svg_clear_' + (i - 1)).getBoundingClientRect().width);
+			}
+			var posWid = document.getElementById('svg_clear_' + i).getBoundingClientRect().width + 'px';
+			var posHyt = document.getElementById('svg_clear_' + i).getBoundingClientRect().height + 'px';
 			var posText = $(this).text();
 			var upcParent = $(this).parents('.upc-container');
-			
-			$(upcParent).find('.' + brand + '_svg-sub').append('<span class="clear-svg" style="top: ' + posTop + 'px; left: ' + posLeft + 'px;">' + posText + '</span>');
+
+			console.log($(this).parent('g').attr('transform').replace('translate(', '').replace(')', '').replace(',', '').split(' ')[0]);
+			$(upcParent).find('.' + brand + '_svg-sub .svg-sub-wrap').append('<span class="clear-svg" style="margin-left: ' + posMar + 'px; width: ' + posWid + '; height: ' + posHyt + '; left: ' + posLeft + 'px; top: ' + posTop + 'px;"><span style="position: absolute;display: block;top: 99px;">' + posText + '</span></span>');
+
+			// Hide svg texts
 			$(this).hide();
 		});
 		// End Barcode Number fix/hack
 
+		// Description Fill and validation
 		$(this).find('.description-container').text(desc);
 		if(descLen > descMed && descLen < descLong) {
 			$(this).find('.description-container').addClass('desc-medium');	
@@ -70,6 +82,7 @@ function generate() {
 			$(this).find('.description-container').removeClass('desc-long');
 		}
 
+		// SKU Fill and validation
 		$(this).find('.sku-container').text(sku);
 		if(skuLen > 15) {
 			$(this).find('.sku-container').addClass('sku-long');

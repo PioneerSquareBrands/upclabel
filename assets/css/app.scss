@@ -150,6 +150,15 @@ select {
 			.gd_svg-sub,
 			.bh_svg-sub {
 				position: absolute;
+				width: 100%;
+				height: 100%;
+				bottom: 0;
+				overflow: hidden;
+			}
+
+			.svg-sub-wrap {
+				position: relative;
+				height: 100%;
 			}
 
 			.clear-svg {
@@ -163,14 +172,6 @@ select {
 				&:nth-child(5) {
 					font-size: 18px;
 				}
-			}
-
-			#gd_upcDrawing,
-			#bh_upcDrawing {
-				display: none;
-				position:absolute;
-				width: 150%;
-				height: 150%;
 			}
 		}
 
