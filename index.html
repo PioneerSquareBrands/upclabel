@@ -8,6 +8,7 @@
 		<link rel="shortcut icon" href="assets/img/tool.png" />
 		<link rel="stylesheet" href="assets/css/foundation.css">
 		<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,700i,900|B612+Mono:400,700&display=swap" rel="stylesheet"> 
+		<link rel="stylesheet" href="assets/css/vendor.css">
     <link rel="stylesheet" href="assets/css/app.css">
   </head>
   <body>
@@ -57,8 +58,11 @@
 									<input class="switch-default" type="text" placeholder="Item UPC" id="upc" value="" data-bh="73079128900" data-gd="818090023607">
 								</div>
 								<div class="large-6 cell" data-section="QR Code/QR Link">
-									<label>QR Link</label>
-									<input class="switch-default" type="text" placeholder="QR Link" id="qr" value="" data-bh="https://brenthaven.com/2890" data-gd="https://www.gumdropcases.com/01A001">
+									<label class="qr-relative">
+										QR Link 
+										<a href="#" class="qr-lock" aria-label="QR Links are auto-generated based on the Brand and SKU fields. Click on this Customize Button if it needs to be edited manually." data-balloon-pos="up" data-balloon-length="large">Customize</a>
+									</label>
+									<input type="text" placeholder="QR Link" id="qr" disabled>
 								</div>
 								<div class="large-6 cell" data-section="Quantity Label">
 									<label>Quantity Label</label>

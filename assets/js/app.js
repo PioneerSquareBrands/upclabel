@@ -7,20 +7,27 @@ $(window).on('load', function() {
 
 function generate() {
 	var brand = $('#brand').val();
+	var itemMaster = $('#item_master').val();
+	var upc = $('#upc').val();
+	var sku = $('#sku').val();
+	var desc = $('#description').val();
+	var qtyLabel = $('#quantity_label').val();
+	var qty = $('input[name="qty"]:checked').val();
+	if (brand == 'GD') {
+		var qrLinkGenerate = 'https://www.gumdropcases.com/' + itemMaster;
+	}
+	else if(brand == 'BH') {
+		var qrLinkGenerate = 'https://brenthaven.com/' + itemMaster;
+	}
+	$('input#qr').val(qrLinkGenerate);
+	var qr = $('#qr').val();
+
 	var upcHeading = $('#upc_header').val();
 	$('.upc-label--heading').text(upcHeading);
 
 	if (brand == 'GD') {
 		$('#gd_label').show();
 		$('#bh_label').hide();
-
-		var itemMaster = $('#item_master').val();
-		var upc = $('#upc').val();
-		var sku = $('#sku').val();
-		var desc = $('#description').val();
-		var qtyLabel = $('#quantity_label').val();
-		var qty = $('input[name="qty"]:checked').val();
-		var qr = $('#qr').val();
 
 		JsBarcode("#gd_label #upc-svg", upc, {format: "upc"});
 		$('#gd_label .master-container').text(itemMaster);
@@ -29,20 +36,12 @@ function generate() {
 		$('#gd_label .quantity-container .qty-label').text(qtyLabel + ':')
 		$('#gd_label .quantity-container .qty-val').text(qty)
 		$('#gd_label #qrcode').html('');
-		$('#gd_label #qrcode').qrcode({width: 75, height: 75, text: qr});
+		$('#gd_label #qrcode').qrcode({width: 64, height: 64, text: qr});
 		$('#gd_label .qr-link').text(qr);
 	} 
 	else if(brand == 'BH') {
 		$('#bh_label').show();
 		$('#gd_label').hide();
-
-		var itemMaster = $('#item_master').val();
-		var upc = $('#upc').val();
-		var sku = $('#sku').val();
-		var desc = $('#description').val();
-		var qtyLabel = $('#quantity_label').val();
-		var qty = $('input[name="qty"]:checked').val();
-		var qr = $('#qr').val();
 
 		JsBarcode("#bh_label #upc-svg", upc, {format: "upc"});
 		$('#bh_label .master-container').text(itemMaster);
@@ -51,9 +50,11 @@ function generate() {
 		$('#bh_label .quantity-container .qty-label').text(qtyLabel + ':')
 		$('#bh_label .quantity-container .qty-val').text(qty)
 		$('#bh_label #qrcode').html('');
-		$('#bh_label #qrcode').qrcode({width: 75, height: 75, text: qr});
+		$('#bh_label #qrcode').qrcode({width: 64, height: 64, text: qr});
 		$('#bh_label .qr-link').text(qr);
 	}
+
+	$('#upc-svg g:nth-child(4) text, #upc-svg g:nth-child(6) text').css('font', 'bold 21px Consolas');
 }
 
 function switchDefault() {
@@ -63,6 +64,11 @@ function switchDefault() {
 		$(this).val(defVal);
 	});
 }
+
+$('.qr-lock').on('click', function(e) {
+	e.preventDefault();
+	$('#qr').prop('disabled', function(i, v) { return !v; });
+})
 
 $('#generator_form').on('change keyup paste', function(e) {
 	generate();

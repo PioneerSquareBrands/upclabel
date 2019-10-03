@@ -76,6 +76,16 @@ select {
     color: magenta;
     margin-bottom: 10px; }
 
+.qr-relative {
+  position: relative; }
+
+.qr-lock {
+  position: absolute !important;
+  font-size: 11px;
+  top: 4px;
+  right: 0;
+  font-weight: 400; }
+
 .cut-off {
   display: inline-block;
   border: 1px solid magenta;
@@ -111,7 +121,7 @@ select {
       justify-content: center; }
       .cut-off .upc-wrapper .upc-container #upc-svg g:nth-child(4) text,
       .cut-off .upc-wrapper .upc-container #upc-svg g:nth-child(6) text {
-        font-size: 19px !important; }
+        font-size: 21px !important; }
     .cut-off .upc-wrapper .master-container {
       font-size: 0.15in;
       line-height: 0.15in;
