@@ -114,13 +114,13 @@ function qrSwitch() {
 		site = 'https://gumdropcases.com/'
 		if(sku.endsWith('E01-0')){
 			sku = sku.slice(0,-5);
-			console.log('Gumdrop SKU ending with E01-0');
+			//console.log('Gumdrop SKU ending with E01-0');
 		}
 	} else if(brand == 'bh') {
 		site = 'https://brenthaven.com/'
 		if(sku.endsWith('000')){
 			sku = sku.slice(0,-3);
-			console.log('Brenthaven SKU ending with 000');
+			//console.log('Brenthaven SKU ending with 000');
 		}
 	}
 	$('#qr').val(site + sku);
@@ -150,13 +150,20 @@ $('.qr-lock').on('click', function(e) {
 
 $('#download-pdf').on('click', function(e) {
 	e.preventDefault();
-	var brand = $('#brand').val();
 	var bag = $('#upc_header').val();
-	var itemMaster = $('#item_master').val();
-	var qtyLabel = $('#quantity_label').val().replace(' ', '_');
-	var qty = $('#qty').val();
+	var bagHeader;
+	var sku = $('#sku').val();
 
-	var fileName =  brand + itemMaster + ' (' + bag + ') (' + qtyLabel + '-' + qty + ').pdf';
+	if (bag == 'Polybag UPC Label') {
+		bagHeader = 'PB';
+	} else if (bag == 'Master Carton UPC Label') {
+		bagHeader = 'MC';
+	} else if (bag == 'Inner Carton UPC Label') {
+		bagHeader = 'IC';
+	}
+
+	var fileName = sku + ' ' + bagHeader + 'UPC Label.pdf';
+
 	var element = document.getElementById('generated_wrapper');
 	var opt = {
 		margin: 1,
@@ -166,5 +173,5 @@ $('#download-pdf').on('click', function(e) {
 		jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
 	};
 
-	html2pdf().set(opt).from(element, 'element').save(); 
+	html2pdf().set(opt).from(element, 'element').save();
 });
