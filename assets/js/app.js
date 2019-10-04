@@ -127,7 +127,7 @@ function qrSwitch() {
 }
 
 $('#brand').on('change', function() {
-	switchDefault();
+	//switchDefault();
 });
 
 $('#generator_form').on('change keyup paste', function(e) {
