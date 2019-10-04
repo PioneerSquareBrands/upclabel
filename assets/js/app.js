@@ -153,6 +153,7 @@ $('#download-pdf').on('click', function(e) {
 	var bag = $('#upc_header').val();
 	var bagHeader;
 	var sku = $('#sku').val();
+	var qty = $('#qty').val();
 
 	if (bag == 'Polybag UPC Label') {
 		bagHeader = 'PB';
@@ -162,8 +163,8 @@ $('#download-pdf').on('click', function(e) {
 		bagHeader = 'IC';
 	}
 
-	var fileName = sku + ' ' + bagHeader + 'UPC Label.pdf';
-
+	var fileName = sku + ' ' + bagHeader + 'UPC Label (' + qty + ').pdf';
+	 
 	var element = document.getElementById('generated_wrapper');
 	var opt = {
 		margin: 1,
