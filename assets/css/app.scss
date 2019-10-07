@@ -60,6 +60,24 @@ select {
 	}
 }
 
+.qr-inputs label {
+	display: flex;
+	align-items: center;
+}
+
+.validate-upc {
+	font-size: 11px;
+	margin-left: 6px;
+
+	&.valid {
+		color: #228b22;
+	}
+
+	&.invalid {
+		color: red;
+	}
+}
+
 #quantity_input label.option {
 	cursor: pointer;
 	display: inline-block;

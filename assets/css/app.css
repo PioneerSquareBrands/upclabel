@@ -48,6 +48,22 @@ select {
     font-size: 11px;
     text-transform: uppercase; }
 
+.qr-inputs label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.validate-upc {
+  font-size: 11px;
+  margin-left: 6px; }
+  .validate-upc.valid {
+    color: #228b22; }
+  .validate-upc.invalid {
+    color: red; }
+
 #quantity_input label.option {
   cursor: pointer;
   display: inline-block;

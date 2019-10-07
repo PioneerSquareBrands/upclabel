@@ -44,9 +44,9 @@ function generate() {
 			fontSize: 16,
 			valid:  	function(valid){
 				if(valid) {
-					console.log('Valid Barcode');
+					$('.validate-upc').removeClass('invalid').addClass('valid').text('Valid UPC');
 				} else {
-					console.log('Invalid Barcode');
+					$('.validate-upc').removeClass('valid').addClass('invalid').text('Invalid UPC');
 				}
 			}
 		});
