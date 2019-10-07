@@ -45,7 +45,7 @@ select {
   .button-controls .download-note {
     color: #228b22;
     display: inline-block;
-    font-size: 12px;
+    font-size: 11px;
     text-transform: uppercase; }
 
 #quantity_input label.option {

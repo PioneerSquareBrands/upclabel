@@ -35,11 +35,20 @@ function generate() {
 
 		var upcSVG = '#' + brand + '_upc-svg';
 
+
+
 		$(this).find('.master-container').text(itemMaster);
 		JsBarcode(upcSVG, upc, {
 			format: 'upc',
 			font: 'OCRB',
-			fontSize: 16
+			fontSize: 16,
+			valid:  	function(valid){
+				if(valid) {
+					console.log('Valid Barcode');
+				} else {
+					console.log('Invalid Barcode');
+				}
+			}
 		});
 
 		// Font Adjustment for middle barcode
@@ -151,8 +160,8 @@ $('.qr-lock').on('click', function(e) {
 
 // Moves to next input on enter
 $('.inputs').keydown(function (e) {
-	e.preventDefault();
 	if (e.which === 13) {
+		e.preventDefault();
 		$(this).nextAll('.inputs').first().find('input, select').focus();
 	}
 });
