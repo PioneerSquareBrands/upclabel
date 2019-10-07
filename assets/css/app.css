@@ -32,6 +32,22 @@ select {
 .button {
   border-radius: 3px; }
 
+.button-controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+  .button-controls #download-pdf {
+    margin-bottom: 0;
+    margin-right: 16px; }
+  .button-controls .download-note {
+    color: #228b22;
+    display: inline-block;
+    font-size: 12px;
+    text-transform: uppercase; }
+
 #quantity_input label.option {
   cursor: pointer;
   display: inline-block;

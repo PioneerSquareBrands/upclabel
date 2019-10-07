@@ -30,14 +30,14 @@
 					<form id="generator_form">
 						<div class="grid-container">
 							<div class="grid-x grid-padding-x">
-								<div class="large-6 cell" data-section="Brand">
+								<div class="large-6 cell inputs" data-section="Brand">
 										<label>Brand</label>
 										<select id="brand">
 											<option value="GD">Gumdrop Cases</option>
 											<option value="BH">Brenthaven</option>
 										</select>
 								</div>
-								<div class="large-6 cell" data-section="Header">
+								<div class="large-6 cell inputs" data-section="Header">
 									<label>Header</label>
 									<select id="upc_header">
 										<option value="Polybag UPC Label">Polybag UPC Label</option>
@@ -45,21 +45,21 @@
 										<option value="Inner Carton UPC Label">Inner Carton UPC Label</option>
 									</select>
 								</div>
-								<div class="large-6 cell" data-section="Item Master">
+								<div class="large-6 cell inputs" data-section="Item Master">
 									<label>Item Master</label>
 									<input class="switch-default" type="text" placeholder="Item Master" id="item_master" value="" data-bh="2890" data-gd="01A001">
 								</div>
-								<div class="large-6 cell" data-section="SKU">
+								<div class="large-6 cell inputs" data-section="SKU">
 									<label>SKU #</label>
-									<input class="switch-default" type="text" placeholder="SKU #" id="sku" value="" data-bh="2890000" data-gd="01A001E01-0" maxlength="18">
+									<input class="inputs switch-default" type="text" placeholder="SKU #" id="sku" value="" data-bh="2890000" data-gd="01A001E01-0" maxlength="18">
 								</div>
-								<div class="large-12 cell" data-section="Description/Item Name">
+								<div class="large-12 cell inputs" data-section="Description/Item Name">
 									<label>Description</label>
-									<input class="switch-default" type="text" id="description" placeholder="Item Name" value="" data-bh="Edge 360 for iPad 10.2 7th Gen - Gray" data-gd="DropTech Clear for iPad 10.2 - Black" data-bh-limit="45, 65" data-gd-limit="65, 95" maxlength="100">
+									<input class="inputs switch-default" type="text" id="description" placeholder="Item Name" value="" data-bh="Edge 360 for iPad 10.2 7th Gen - Gray" data-gd="DropTech Clear for iPad 10.2 - Black" data-bh-limit="45, 65" data-gd-limit="65, 95" maxlength="100">
 								</div>
-								<div class="large-6 cell" data-section="Item UPC/Barcode">
+								<div class="large-6 cell inputs" data-section="Item UPC/Barcode">
 									<label>Item UPC</label>
-									<input class="switch-default" type="text" placeholder="Item UPC" id="upc" value="" data-bh="73079128900" data-gd="818090023607" maxlength="13">
+									<input class="inputs switch-default" type="text" placeholder="Item UPC" id="upc" value="" data-bh="73079128900" data-gd="818090023607" maxlength="13">
 								</div>
 								<div class="large-6 cell" data-section="QR Code/QR Link">
 									<label class="qr-relative">
@@ -68,7 +68,7 @@
 									</label>
 									<input type="text" placeholder="QR Link" id="qr" disabled>
 								</div>
-								<div class="large-6 cell" data-section="Quantity Label">
+								<div class="large-6 cell inputs" data-section="Quantity Label">
 									<label>Quantity Label</label>
 									<select id="quantity_label">
 										<option value="Qty">Qty</option>
@@ -76,12 +76,13 @@
 										<option value="IC Qty">IC Qty</option>
 									</select>
 								</div>
-								<div class="large-6 cell" id="quantity_input" data-section="Quantity Number">
+								<div class="large-6 cell inputs" id="quantity_input" data-section="Quantity Number">
 									<label>Quantity</label>
 									<input type="number" placeholder="Quantity" id="qty" value="1"  min="1">
 								</div>
 								<div class="large-12 cell button-controls" data-section="Controls">
-									<button id="download-pdf" class="button large">Download PDF</button>
+									<button id="download-pdf" class="button large">Download PDF</button><!--
+							 --><div class="download-note" style="display: none;">Your PDF is downloading</div>
 								</div>
 							</div>
 						</div>

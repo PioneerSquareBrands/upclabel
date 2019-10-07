@@ -138,6 +138,7 @@ $('#generator_form #brand, #generator_form #sku').on('change keyup paste', funct
 	qrSwitch();
 });
 
+// Toggles editing on the qr link field
 $('.qr-lock').on('click', function(e) {
 	e.preventDefault();
 	$('#qr').prop('disabled', function(i, v) { return !v; });
@@ -147,6 +148,20 @@ $('.qr-lock').on('click', function(e) {
 		$('#qr').addClass('js-locked');
 	}
 });
+
+// Moves to next input on enter
+$('.inputs').keydown(function (e) {
+	e.preventDefault();
+	if (e.which === 13) {
+		$(this).nextAll('.inputs').first().find('input, select').focus();
+	}
+});
+
+$('#generator_form').keydown(function(ev) {
+	if (ev.ctrlKey && ev.keyCode === 13) {
+		$('#download-pdf').trigger('click');
+	}
+})
 
 $('#download-pdf').on('click', function(e) {
 	e.preventDefault();
@@ -175,4 +190,5 @@ $('#download-pdf').on('click', function(e) {
 	};
 
 	html2pdf().set(opt).from(element, 'element').save();
+	$(".download-note").fadeIn().delay(3000).fadeOut();
 });

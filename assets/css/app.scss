@@ -44,6 +44,22 @@ select {
 	border-radius: 3px;
 }
 
+.button-controls {
+	display: flex;
+	align-items: center;
+	
+	#download-pdf {
+		margin-bottom: 0;
+		margin-right: 16px;
+	}
+	.download-note {
+		color: #228b22;
+		display: inline-block;
+		font-size: 12px;
+		text-transform: uppercase;
+	}
+}
+
 #quantity_input label.option {
 	cursor: pointer;
 	display: inline-block;
