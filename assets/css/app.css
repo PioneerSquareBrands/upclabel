@@ -355,3 +355,9 @@ select {
       font-size: 12px; }
     .cut-off #bh_label .qr-wrapper {
       margin: 0.05in 0.1in 0; }
+  .cut-off #gd_label.carton-label, .cut-off #bh_label.carton-label {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+  .cut-off #gd_label.carton-label .qr-wrapper, .cut-off #bh_label.carton-label .qr-wrapper {
+    display: none; }

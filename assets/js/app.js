@@ -29,13 +29,17 @@ function generate() {
 
 	$('.upc-label--heading').text(upcHeading);
 
+	if (upcHeading == 'Master Carton UPC Label' || upcHeading == 'Inner Carton UPC Label') {
+		$('#gd_label, #bh_label').addClass('carton-label');
+	} else {
+		$('#gd_label, #bh_label').removeClass('carton-label');
+	}
+
 	$('#' + brand + '_label').each(function() {
 		$(this).siblings().hide();
 		$(this).show();
 
 		var upcSVG = '#' + brand + '_upc-svg';
-
-
 
 		$(this).find('.master-container').text(itemMaster);
 		JsBarcode(upcSVG, upc, {

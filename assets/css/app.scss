@@ -407,4 +407,13 @@ select {
 			margin: 0.05in 0.1in 0;
 		}
 	}
+
+	#gd_label, #bh_label {
+		&.carton-label {
+			justify-content: center;
+		}
+		&.carton-label .qr-wrapper {
+			display: none;
+		}
+	}
 }
